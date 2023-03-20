@@ -25,20 +25,22 @@ body{
     padding: 20px;
     text-align: center;
   }
-#inptVal{
-    display: none;
-}
-/* #uploadFl{
-    display: none;
-}
- */
- #Cal{
+ .Cal{
   background-color: #4CAF50; /* Green */
   border:#f1f1f1;
   color: white;
   padding: 15px 32px;
   text-align: center;
-  text-decoration :none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
  }
+ #inptVal{
+  display: none;
+}
+/* #uploadFl{
+  display: none;
+}
+*/
