@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forest Fire Tool</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="forest_pic.jpg" type="image/x-icon" >
+
+</head>    
+<body>
+    <div class="bg-text">
+    <h1>FOREST FIRE WEB TOOL </h1> <br>
+           <h3>for Calculating </h3> <br>  <h2>  Air Temperature, Relative Humidity and Wind Speed</h2>
+           <br>
+           <br>
+    <!-- Options for performing the calculation as per user's reference -->
+    <div>
+        <fieldset>
+            <br>
+            <div ><input type="radio" name="one" id="one" onclick="show1()" value="ONE" >Input Data </div>
+            <br><!-- 
+            <h2>OR</h2>
+            <br>
+            <div><input type="radio" name="one" id="two" onclick="show2()" value="TWO">Upload CSV File</div>
+            <br> -->
+        </fieldset>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- Values of AT, RH AND WS to be accepted by the user -->
+    <div id="inptVal">
+        <fieldset>
+            <label for="at">Enter Air Temperature <input type="number" name="AT" id="at" placeholder="Enter a non-zero number"></label>
+            <br>
+            <br>
+            <label for="rh">Enter Relative Humidity <input type="number" name="RH" id="rh" placeholder="Enter a non-zero number"></label>
+            <br>
+            <br>
+            <label for="ws">Enter Wind Speed <input type="number" name="WS" id="ws" placeholder="Enter a non-zero number"></label>
+            <br>
+        </fieldset>
+    </div>
+    <br>
+    <!-- Values of AT, RH AND WS to be fetched by  the CSV FILE-->
+    <!-- <div id="uploadFl">
+        <fieldset >
+                <label for="file">Upload a CSV File<input type="file" name="CSVF" id="picker" placeholder="Upload a file" accept=".csv"></label>
+        </fieldset>
+    </div> -->
+    <br>
+    <!-- Button to calculate the formula for different values accepted and constants as per conditions -->
+    <div>
+        <button type="submit" id="Cal" onclick="Calculate()">Calculate</button>
+        <br>
+        <br>
+        <p id="result1"></p><br><p id="result2"></p><br><p id="result3"></p><br><p id="result4"></p>
+
+    </div>
+    <br>
+    <!-- <div>
+        <fieldset>
+            <table id="table"></table>
+            <script>
+                window.onload = () => {
+                    //FILE READER + HTML ELEMENTS
+                    var reader = new FileReader(),
+                        picker = document.getElementById("picker"),
+                        table  = document.getElementById("table");
+
+                    //READ CSV ON FILE PICKER
+                    picker.onchange = () => reader.readAsText(picker.files[0]);
+
+                    //READ THE CSV FILE & GENERATE HTML
+                    reader.onload = () =>   {
+                        let csv = reader.result;
+
+                    // CLEAR HTML TABLE
+                    table.innerHTML = "";
+
+                    //SPLIT INTO ROWS
+                    let rows = csv.split("\r\n");
+
+                    //LOOP THROUGH ROWS + SPLIT COLUMNS
+                    for(let row of rows){
+                        let cols = row.match(/(?:\"([^\"]*(?:\"\"[^\"]*)*)\")|([^\",]+)/g);
+                        if (cols != null){
+                            let tr= table.insertRow();
+                            for (let col of cols) {
+                                let td = tr.insertCell();
+                                td.innerHTML = col;
+                            }
+                        }
+                    }
+
+                    };
+
+                };
+            </script>
+        </fieldset>
+    </div>
+</div> -->
+    <script>
+        function show1(){
+             document.getElementById('inptVal').style.display ='block';
+    }
+    function show2(){
+             document.getElementById('uploadFl').style.display = 'block';
+    }
+    
+    function Calculate(){
+            const e=2.71828; 
+            let x=document.getElementById("at");
+            let y=document.getElementById("rh");
+            let z=document.getElementById("ws");
+
+            x_1=Number(x.value); // AIR TEMPERATURE
+            x_2=Number(y.value); // RELATIVE HUMIDITY
+            x_3=Number(z.value); // WIND SPEED
+            
+            console.log(x_1);
+            console.log(x_2);
+            console.log(x_3);
+            let a,b,c,d,p1, p2, p3, p4;
+        
+
+                if ( x_1 && x_2 ){
+                        a=5.8;
+                        b=0.02;
+                        c=(-7.9);
+                        d=0;
+                        p1= 1/(1+e^(-(a+b*x_1+c*x_2+d*x_3)));
+                        document.getElementById("result1").innerHTML =p1;                        
+                }
+                else if( x_2 && x_3 ){
+                        a=4.5;
+                        b=1.0;
+                        c=(-6.4);
+                        d=(-6.8);
+                        p2= 1/(1+e^(-(a+b*x_1+c*x_2+d*x_3))); 
+                        document.getElementById("result2").innerHTML =p2;                        
+
+                }
+                else if( x_1 && x_3 ){
+                        a=0.7;
+                        b=2.2;
+                        c=(-0.02);
+                        d=(-6.8);
+                        p3= 1/(1+e^(-(a+b*x_1+c*x_2+d*x_3)));
+                        document.getElementById("result3").innerHTML =p3;                        
+
+                }
+                else if( x_1 && x_2 && x_3 ){ 
+                        a=4.6;
+                        b=0.96;
+                        c=0.02;
+                        d=(-6.8);
+                        p4= 1/(1+e^(-(a+b*x_1+c*x_2+d*x_3)));
+                        document.getElementById("result4").innerHTML =p4;                        
+
+                        
+                }
+            }
+            
+            
+</script>
+</body>
+</html>
