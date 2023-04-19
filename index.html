@@ -1,108 +1,116 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Forest Fire Tool</title>
-    <link rel="stylesheet" href="index.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="forest_pic.jpg" type="image/x-icon" >
-    <script src="index.js"></script>
-
-
-</head>    
-<body>
+    <link rel="stylesheet" href="index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="forest_pic.jpg" type="image/x-icon" />
+     <script src="index.js"></script>
+    <script src="updateCSV.js"></script>
+  </head>
+  <body>
     <div class="bg-text">
-    <h1>FOREST FIRE WEB TOOL (Beta Version 0.1) </h1> <br>
-        <h2>This tool gives an output in terms of the Probability of occurrence of fire using Logistic Regression <br> when 
-            user input daily data of either two of the three or all three weather variables <br> (Air Temperature in deg C, 
-            Relative Humidity in percent, and Wind Speed in m/s) </h2> <br>
-           <br>
-    <!-- Options for performing the calculation as per user's reference -->
-    <div>
+      <h1>FOREST FIRE WEB TOOL (Beta Version 0.1)</h1>
+      <br />
+      <h2>
+        This tool gives an output in terms of the Probability of occurrence of
+        fire using Logistic Regression <br />
+        when user input daily data of either two of the three or all three
+        weather variables <br />
+        (Air Temperature in deg C, Relative Humidity in percent, and Wind Speed
+        in m/s)
+      </h2>
+      <br />
+      <br />
+      <!-- Options for performing the calculation as per user's reference -->
+      <div>
         <fieldset>
-            <br>
-            <div ><input type="radio" name="one" id="one" onclick="show1()" value="ONE" >Input Data </div>
-            <br><!-- 
-            <h2>OR</h2>
-            <br>
-            <div><input type="radio" name="one" id="two" onclick="show2()" value="TWO">Upload CSV File</div>
-            <br> -->
+          <br />
+          <div>
+            <input
+              type="radio"
+              name="one"
+              id="radio1"
+              onclick="show1()"
+              value="ONE"
+            />Input Data
+          </div>
+          <br />
+          <h2>OR</h2>
+          <br />
+          <div>
+            <input
+              type="radio"
+              name="one"
+              id="radio2"
+              onclick="show2()"
+              value="TWO"
+            />Upload CSV File
+          </div>
+          <br />
         </fieldset>
-    </div>
-    <br>
-    <br>
-    <br>
-    <!-- Values of AT, RH AND WS to be accepted by the user -->
-    <div id="inptVal">
+      </div>
+      <br />
+      <!-- Values of AT, RH AND WS to be accepted by the user -->
+      <div id="inptVal">
         <fieldset>
-            <label for="at">Enter Air Temperature <input type="number" name="AT" id="at" placeholder="Enter a non-zero number"></label>
-            <br>
-            <br>
-            <label for="rh">Enter Relative Humidity <input type="number" name="RH" id="rh" placeholder="Enter a non-zero number"></label>
-            <br>
-            <br>
-            <label for="ws">Enter Wind Speed <input type="number" name="WS" id="ws" placeholder="Enter a non-zero number"></label>
-            <br>
+          <label for="at"
+            >Enter Air Temperature
+            <input
+              type="number"
+              name="AT"
+              id="at"
+              placeholder="Enter a non-zero number"
+          /></label>
+          <br />
+          <br />
+          <label for="rh"
+            >Enter Relative Humidity
+            <input
+              type="number"
+              name="RH"
+              id="rh"
+              placeholder="Enter a non-zero number"
+          /></label>
+          <br />
+          <br />
+          <label for="ws"
+            >Enter Wind Speed
+            <input
+              type="number"
+              name="WS"
+              id="ws"
+              placeholder="Enter a non-zero number"
+          /></label>
+          <br />
+          <br />
+          <button type="submit" class="Cal" onclick="Calculate()">Calculate</button>
         </fieldset>
-    </div>
-    <br>
-    <!-- Values of AT, RH AND WS to be fetched by  the CSV FILE-->
-    <!-- <div id="uploadFl">
-        <fieldset >
-                <label for="file">Upload a CSV File<input type="file" name="CSVF" id="picker" placeholder="Upload a file" accept=".csv"></label>
-        </fieldset>
-    </div> -->
-    <br>
-    <!-- Button to calculate the formula for different values accepted and constants as per conditions -->
-    <div>
-        <button type="submit" class="Cal" onclick="Calculate()">Calculate</button>
-        <br>
-        <br>
-        <p id="result1"></p><br><p id="result2"></p><br><p id="result3"></p><br><p id="result4"></p>
-
-    </div>
-    <br>
-    <!-- <div>
+      </div>
+      <!-- Values of AT, RH AND WS to be fetched by  the CSV FILE-->
+      <div id="uploadFl">
         <fieldset>
-            <table id="table"></table>
-            <script>
-                window.onload = () => {
-                    //FILE READER + HTML ELEMENTS
-                    var reader = new FileReader(),
-                        picker = document.getElementById("picker"),
-                        table  = document.getElementById("table");
-
-                    //READ CSV ON FILE PICKER
-                    picker.onchange = () => reader.readAsText(picker.files[0]);
-
-                    //READ THE CSV FILE & GENERATE HTML
-                    reader.onload = () =>   {
-                        let csv = reader.result;
-
-                    // CLEAR HTML TABLE
-                    table.innerHTML = "";
-
-                    //SPLIT INTO ROWS
-                    let rows = csv.split("\r\n");
-
-                    //LOOP THROUGH ROWS + SPLIT COLUMNS
-                    for(let row of rows){
-                        let cols = row.match(/(?:\"([^\"]*(?:\"\"[^\"]*)*)\")|([^\",]+)/g);
-                        if (cols != null){
-                            let tr= table.insertRow();
-                            for (let col of cols) {
-                                let td = tr.insertCell();
-                                td.innerHTML = col;
-                            }
-                        }
-                    }
-
-                    };
-
-                };
-            </script>
+          <br />
+          <label for="file"
+            >Upload a CSV File<input
+              type="file"
+              name="csvf"
+              id="picker"
+              placeholder="Upload a file"
+              accept=".csv"
+          /></label>
+          <br />
+          <br />
+          <button type="submit" class="calCSV" onclick="calculateCSVData()">Calculate from CSV Data
+          </button>
         </fieldset>
+      </div>
+      <br />
+      <div id="result">
+        <table id="table"></table>
+      </div>
     </div>
-</div> -->
-  
-</body>
+
+    
+  </body>
 </html>

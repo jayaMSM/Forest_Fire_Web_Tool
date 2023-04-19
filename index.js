@@ -1,24 +1,30 @@
 function show1(){
-    document.getElementById('inptVal').style.display ='block';
+    if(document.getElementById('radio1').checked) 
+    { 
+        document.getElementById('inptVal').style.display ='block';    
+} else { 
+  alert ("You must select a button"); 
+  return false; 
+} 
 }
 function show2(){
-    document.getElementById('uploadFl').style.display = 'block';
+    if(document.getElementById('radio2').checked) { 
+        document.getElementById('uploadFl').style.display = 'block';
+} else { 
+  alert ("You must select a button"); 
+  return false; 
+} 
 }
 
 function Calculate(){
-   const e=2.71828; 
+   const e=2.71828;    let a,b,c,d,p1, p2, p3, p4;
    let x=document.getElementById("at");
    let y=document.getElementById("rh");
    let z=document.getElementById("ws");
 
-   x_1=Number(x.value); // AIR TEMPERATURE
-   x_2=Number(y.value); // RELATIVE HUMIDITY
-   x_3=Number(z.value); // WIND SPEED
-   
-   console.log(x_1);
-   console.log(x_2);
-   console.log(x_3);
-   let a,b,c,d,p1, p2, p3, p4;
+   let x_1=Number(x.value); // AIR TEMPERATURE
+   let x_2=Number(y.value); // RELATIVE HUMIDITY
+   let x_3=Number(z.value); // WIND SPEED
 
 
        if ( x_1 && x_2 ){
