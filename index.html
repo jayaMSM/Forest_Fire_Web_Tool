@@ -7,6 +7,7 @@
     <link rel="icon" href="forest_pic.jpg" type="image/x-icon" />
      <script src="index.js"></script>
     <script src="updateCSV.js"></script>
+
   </head>
   <body>
     <div class="bg-text">
@@ -42,10 +43,10 @@
           <label for="at">Enter Air Temperature<input type="number" name="AT" id="at" placeholder="Enter a non-zero number"/></label>
           <br />
           <br />
-          <label for="rh">Enter Relative Humidity<input type="number" name="RH" id="rh" placeholder="Enter a non-zero number"/></label>
-          <br />
-          <br />
           <label for="ws">Enter Wind Speed<input type="number" name="WS" id="ws" placeholder="Enter a non-zero number"/></label>
+          <br />
+          <br />
+          <label for="rh">Enter Relative Humidity<input type="number" name="RH" id="rh" placeholder="Enter a non-zero number"/></label>
           <br />
           <br />
           <button type="submit" class="Cal" onclick="Calculate()">Calculate</button>
@@ -62,12 +63,15 @@
           <label for="file">Upload a CSV File<input type="file" name="csvf" id="picker" placeholder="Upload a file" accept=".csv"/></label>
           <br />
           <br />
-          <button type="submit" class="calCSV" onclick="calculateCSVData()">Values from CSV Data File
-          </button>
-        </fieldset>
+<!--           <button type="submit" class="calCSV" onclick="calculateCsvData()">Values from CSV Data File </button>
+ -->        </fieldset>
       </div>
       <br />
+      <!-- <div>
+        <table id="table1"></table>
+      </div> -->
       <div id="result">
+        <br>
         <table id="table"></table>
       </div>
     </div>

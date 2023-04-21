@@ -13,10 +13,26 @@
         var reader = new FileReader();
         var picker = document.getElementById("picker");
         var table = document.getElementById("table");
+/*         var table1 = document.getElementById("table1");
+ */
 
         //READ CSV ON FILE PICKER
         picker.onchange = () => reader.readAsText(picker.files[0]);
 
+        /* 
+        // (C) READ CSV & GENERATE TABLE
+            reader.onloadend = () => {
+            table.innerHTML = "";
+            for (let row of CSV.parse(reader.result)) {
+            let tr = table.insertRow();
+              for (let col of row) {
+              let td = tr.insertCell();
+              td.innerHTML = col;
+          }
+          }
+        }        
+        */
+        
         //READ THE CSV FILE & GENERATE HTML
         reader.onload = () => {
           let csv = reader.result;
@@ -28,6 +44,7 @@
           let rows = csv.split("\r\n");
           //   console.log(rows);
 
+         
           function calculateCsvData() {
             let x_1, x_2, x_3;
             let result = document.getElementById("result");
@@ -42,28 +59,28 @@
                 b = 0.02;
                 c = -7.9;
                 d = 0;
-                p1 = 1 / ((1 + e) ^ -(a + b * x_1 + c * x_2 + d * x_3));
+                p1 = 1 / (1 + e ^ -(a + b * x_1 + c * x_2 ));
                 result.innerHTML += `${counter}: ${p1}<br>`;
               } else if (x_2 && x_3) {
                 a = 4.5;
                 b = 1.0;
                 c = -6.4;
                 d = -6.8;
-                p2 = 1 / ((1 + e) ^ -(a + b * x_1 + c * x_2 + d * x_3));
+                p2 = 1 / (1 + e ^ -(a + c * x_2 + d * x_3));
                 result.innerHTML += `${counter}: ${p2}<br>`;
               } else if (x_1 && x_3) {
                 a = 0.7;
                 b = 2.2;
                 c = -0.02;
                 d = -6.8;
-                p3 = 1 / ((1 + e) ^ -(a + b * x_1 + c * x_2 + d * x_3));
+                p3 = 1 / (1 + e ^ -(a + b * x_1 + d * x_3));
                 result.innerHTML += `${counter}: ${p3}<br>`;
               } else if (x_1 && x_2 && x_3) {
                 a = 4.6;
                 b = 0.96;
                 c = 0.02;
                 d = -6.8;
-                p4 = 1 / ((1 + e) ^ -(a + b * x_1 + c * x_2 + d * x_3));
+                p4 = 1 / (1 + e ^ -(a + b * x_1 + c * x_2 + d * x_3));
                 result.innerHTML += `${counter}: ${p4}<br>`;
               }
             }
