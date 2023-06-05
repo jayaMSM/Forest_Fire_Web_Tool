@@ -7,9 +7,11 @@
     <link rel="icon" href="forest_pic.jpg" type="image/x-icon" />
      <script src="index.js"></script>
     <script src="updateCSV.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
   </head>
   <body>
+    <div class="bg-image"></div>
     <div class="bg-text">
       <h1>FOREST FIRE WEB TOOL (Beta Version 0.1)</h1>
       <br />
@@ -62,18 +64,22 @@
           <br />
           <label for="file">Upload a CSV File<input type="file" name="csvf" id="picker" placeholder="Upload a file" accept=".csv"/></label>
           <br />
+          <br>
+          <button onclick="printResult()">Print Result</button>
+      <button onclick="printScatterPlot()">Print Scatter Plot</button>
+          
+          <br>
           <br />
 <!--           <button type="submit" class="calCSV" onclick="calculateCsvData()">Values from CSV Data File </button>
  -->        </fieldset>
       </div>
       <br />
-      <!-- <div>
-        <table id="table1"></table>
-      </div> -->
-      <div id="result">
-        <br>
-        <table id="table"></table>
-      </div>
+      
+      <div><table id="table"></table></div> 
+      <div id="result"></div>
+      <div id="plot"></div>
+      <button onclick="printResult()">Print Result</button>
+      <button onclick="printScatterPlot()">Print Scatter Plot</button>
     </div>
 
     

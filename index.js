@@ -33,14 +33,15 @@ function Calculate(){
                 b = 0.02;
                 c = -7.9;
                 d = 0;
-                p1 = 1 / (1 + e ^ -(a + b * x_1 + c * x_2 ));
+                p1 = 1 / (1 + Math.exp(-(a + b * x_1 + c * x_2)));
+                p1.toFixed();
                 document.getElementById("result1").innerHTML =p1;                        
        }else if (x_2 && x_3) {
                 a = 4.5;
                 b = 1.0;
                 c = -6.4;
                 d = -6.8;
-                p2 = 1 / (1 + e ^ -(a + c * x_2 + d * x_3));
+                p2 = 1 / (1 + Math.exp(-(a + c * x_2 + d * x_3)));
                 document.getElementById("result2").innerHTML =p2;                        
 
        }else if (x_1 && x_3) {
@@ -48,7 +49,7 @@ function Calculate(){
                 b = 2.2;
                 c = -0.02;
                 d = -6.8;
-                p3 = 1 / (1 + e ^ -(a + b * x_1 + d * x_3));
+                p3 = 1 / (1 + Math.exp(-(a + b * x_1 + d * x_3)));
                 document.getElementById("result3").innerHTML =p3;                        
 
        }else if (x_1 && x_2 && x_3) {
@@ -56,7 +57,7 @@ function Calculate(){
                 b = 0.96;
                 c = 0.02;
                 d = -6.8;
-                p4 = 1 / (1 + e ^ -(a + b * x_1 + c * x_2 + d * x_3));
+                p4 = 1 / (1 + Math.exp(-(a + b * x_1 + c * x_2 + d * x_3)));
                 document.getElementById("result4").innerHTML =p4;                        
 
                

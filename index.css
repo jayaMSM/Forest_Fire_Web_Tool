@@ -3,14 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
-html{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body, html {
   height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
-body{
-        background-image: url('https://images.pexels.com/photos/572688/pexels-photo-572688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); 
-        background-repeat: repeat-y;
-        background-size:auto;
+
+
+.bg-image {
+  /* The image used */
+  background-image: url('https://images.pexels.com/photos/339614/pexels-photo-339614.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  
+  /* Full height */
+  height: 100%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
   /* Position text in the middle of the page/image */
@@ -30,9 +44,9 @@ body{
     text-align: center;
   }
  .Cal{
-  background-color: #4CAF50; /* Green */
+  background-color: burlywood;
   border:#f1f1f1;
-  color: white;
+  color: rgb(2, 16, 1);
   padding: 15px 32px;
   text-align: center;
   display: inline-block;
@@ -42,9 +56,9 @@ body{
 
  }
  .calCSV{
-  background-color:   #4CAF50; /* Green */
+  background-color:   burlywood;
   border:#f1f1f1;
-  color: white;
+  color:  rgb(2, 16, 1);
   padding: 15px 32px;
   text-align: center;
   display: inline-block;
